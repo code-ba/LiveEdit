@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线编辑器</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <script src="/node_modules/ant-design-vue/dist/antd.js"></script>
+    <link rel="stylesheet" href="/node_modules/ant-design-vue/dist/antd.css">
+    <link rel="stylesheet" href="/css/template.min.css">
+</head>
+
+<body>
+    <!-- 这个页面是列表页 新增编辑删除 -->
+    <div id="app">
+        <div class="container">
+            <div class="hd">
+                <a-form layout="inline" :model="searchForm">
+                    <a-form-item label="名称">
+                        <a-input v-model="searchForm.name" />
+                    </a-form-item>
+                    <a-form-item label="描述">
+                        <a-input v-model="searchForm.desc" />
+                    </a-form-item>
+                    <!-- button -->
+                    <a-form-item>
+                        <a-space>
+                            <a-button type="primary" @click="onSearch">查询</a-button>
+                            <a-button @click="onReset">重置</a-button>
+                            <a-button type="primary" @click="onAdd">新增</a-button>
+                        </a-space>
+                    </a-form-item>
+                </a-form>
+            </div>
+            <div class="bd">
+                <a-table :columns="columns" :data-source="list" bordered :pagination="searchParams"
+                    :scroll="{ y: 'calc(100vh - 220px)' }">
+                    <template slot="handle" slot-scope="text, record, index">
+                        <a-button type="primary" @click="edit(record)" size="small">编辑</a-button>
+                        <a-button type="danger" @click="delete(record)" size="small">删除</a-button>
+                    </template>
+                </a-table>
+            </div>
+        </div>
+    </div>
+    <script>
+        Vue.use(antd)
+        new Vue({
+            el: '#app',
+            data: {
+                columns: [
+                    {
+                        title: '名称',
+                        dataIndex: 'name',
+                        align: 'center',
+                        width: 150,
+                    },
+                    {
+                        title: '描述',
+                        dataIndex: 'desc',
+                        align: 'center',
+                    },
+                    {
+                        title: '依赖包版本',
+                        dataIndex: 'version',
+                        align: 'center',
+                    },
+                    {
+                        title: '预览',
+                        dataIndex: 'preview',
+                        align: 'center',
+                        width: 300,
+                    },
+                    {
+                        title: '创建时间',
+                        dataIndex: 'createTime',
+                        align: 'center',
+                        width: 150,
+                    },
+                    {
+                        title: '编辑时间',
+                        dataIndex: 'editTime',
+                        align: 'center',
+                        width: 150,
+                    },
+                    {
+                        title: '操作',
+                        key: 'handle',
+                        scopedSlots: { customRender: 'handle' },
+                        align: 'center',
+                        width: 200,
+                    },
+                ],
+                list: [{
+                    name: '1',
+                    desc: '1',
+                    version: '1',
+                    preview: '1',
+                    createTime: '1',
+                    editTime: '1',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                },
+                {
+                    name: '2',
+                    desc: '2',
+                    version: '2',
+                    preview: '2',
+                    createTime: '2',
+                    editTime: '2',
+                }],
+                searchForm: {
+                    name: '',
+                    desc: '',
+                },
+                searchParams: {
+                    page: 1,
+                    pageSize: 30,
+                    total: 10,
+
+                },
+            },
+            methods: {
+                onAdd() { },
+                onEdit(record) { },
+                onDelete(record) { },
+                onSearch() { },
+                onReset() { },
+                getList() { },
+            }
+        })
+    </script>
+</body>
+
+</html>

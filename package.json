@@ -1,0 +1,28 @@
+{
+  "name": "edit",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ant-design-vue": "^1.7.8",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.0",
+    "nodemon": "^3.1.9",
+    "socket.io": "^4.8.1",
+    "vue": "^2.7.16"
+  },
+  "devDependencies": {
+    "rollup": "^4.28.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
